@@ -1,18 +1,16 @@
 pipeline {
     agent any
-    
+     
     stages {
         stage('Ok') {
             steps {
-                echo "hello world"
+                echo "Ok"
             }
         }
     }
     post {
         always {
-            emailext body: '${DEFAULT_CONTENT}',
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: '${DEFAULT_SUBJECT}'
+            mail bcc: '', body: "<b>BUILD RESULT</b><br>Project: ${env.JOB_NAME} <br><b>Status:</b> ${env.BUILD_STATUS} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'jenkinsdevopsproject@gmail.com', mimeType: 'text/html', replyTo: '', subject: "BUILD CI: Project name -> ${env.JOB_NAME}", to: "thenoob551@gmail.com";
         }
     }
 }
