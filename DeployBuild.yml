@@ -1,0 +1,13 @@
+---
+- hosts: test-servers
+  become: true
+  tasks:
+    - name: copy code to the servers
+      copy:
+        src: /home/nick/Documents/ProjectWebApp
+        dest: /home/webapp
+
+    - name: Start/Restart nodejs application
+      command: npm start
+      args:
+        chdir: /home/webapp/ProjectWebApp
