@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Connecting to ansible') {
             steps{
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook /home/ansible/projectmap/mijnplaybook.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home/deploymentmap', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '//home/nick/Documents/ProjectWebApp')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook /home/nick/Documents/ProjectWebApp/DeployBuild.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//webapp', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '/home/nick/Documents/ProjectWebApp')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }
